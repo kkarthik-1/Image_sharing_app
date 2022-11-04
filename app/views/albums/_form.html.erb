@@ -1,0 +1,20 @@
+<br>
+<%if album.errors.any? %>
+  <%= album.errors.full_messages %>
+<%end %>
+
+<%=form_with model: album do |form| %>
+  <%=form.label :Owner %>
+  <%=form.text_field :Owner ,class: "form form-control-lg"%>
+  <br>
+  <br>
+  <%= form.label :name %>
+  <%= form.text_field :name,class: "form form-control-lg"%>
+  <br>
+  <br>
+  <%=form.label :Created_date %>
+  <%= form.date_field :Created_date,class: "form form-control-lg" %>
+<br>
+  <br>
+  <%= form.submit "Add Album" ,{class: "btn btn-primary"}%>
+<%end %>

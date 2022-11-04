@@ -1,0 +1,42 @@
+
+<%if photo.errors.any? %>
+  <% photo.errors.each do |error| %>
+    <div class="alert alert-danger d-flex align-items-center" role="alert">
+      <div>
+        <%=error.full_message %>
+      </div>
+    </div>
+<%end %>
+  <%end %>
+
+<%=form_with model: [@album,photo] do |form| %>
+  <div class="row g-4">
+
+    <div class="col-4">
+      <%=form.label :owner ,class: "form-label"%>
+      <%=form.text_field :owner,class: "form form-control" %></div>
+
+
+    <div class="col-4">
+      <%= form.label :tagline ,class: "form-label"%>
+  <%= form.text_field :tagline,class: "form form-control" %>
+    </div>
+
+    <div class="col-3">
+  <%=form.label :created_date,class: "form-label" %>
+  <%= form.date_field :created_date,class: "form form-control" %>
+    </div>
+
+
+<div class="col-3">
+  <%= form.file_field :image,class: "form form-control"%>
+</div>
+
+    <div >
+
+      <%= form.submit "Create Photo",{class: "btn btn-primary"}%>
+    </div>
+
+  </div>
+<%end %>
+

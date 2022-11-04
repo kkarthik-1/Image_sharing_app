@@ -1,0 +1,34 @@
+<h1>Albums:</h1>
+<%if current_user.albums.present? %>
+<%@album.each do |album| %>
+
+  <div class="container">
+
+    <h1 class="fw-light text-center text-lg-start mt-4 mb-0"><%=album.name.upcase %></h1>
+
+    <hr class="mt-2 mb-5">
+
+    <div class="row text-center text-lg-start">
+      <%album.photos.each do |photo| %>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div><%= image_tag photo.image.url(:medium) %></div>
+          <div>&nbsp;</div>
+        </div>
+      <% end %>
+      <% if album.photos.size <= 25 %>
+      <div class="col-lg-3 col-md-4 col-6">
+      <%=link_to "Add Photo",new_album_photo_url(album) ,class: "btn btn-primary"%>
+      </div>
+        <%end %>
+    </div>
+
+  </div>
+  <hr class="mt-2 mb-5">
+<% end %>
+<br>
+<br>
+  <%else %>
+  <h3>click my Profile in navigation bar create new album</h3>
+<%end %>
+
+
